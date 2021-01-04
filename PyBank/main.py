@@ -1,11 +1,26 @@
 # print("adding a main file to PyBank")
 import os
 import csv
+import pandas as pd
 
 #csvpath = os.path.join('..', 'Resources', 'budget_data.csv')
 csvpath = r"C:\Users\deler\Desktop\python-challenge\PyBank\Resources\budget_data.csv"
-print(csvpath)
+#print(csvpath)
+df=pd.read_csv(csvpath)
 
+difference=0.0
+df['Change']=df['Profit/Losses'] - df['Profit/Losses'].shift(1)
+average=df['Change'].mean()
+#max=df[df['Profit/Losses']==df['Profit/Losses'].max()]
+#max=df.groupby(['Date','Profit/Losses'], as_index=False)['Profit/Losses'].max()
+maxvalue=df['Profit/Losses'].max()
+maxindex=df['Profit/Losses'].idxmax()
+maxmonth=df.loc[maxindex,'Date']
+
+minvalue=df['Profit/Losses'].min()
+minindex=df['Profit/Losses'].idxmin()
+minmonth=df.loc[minindex,'Date']
+#print(df)
 with open(csvpath) as csvfile:
 
     # CSV reader specifies delimiter and variable that holds contents
@@ -20,6 +35,7 @@ with open(csvpath) as csvfile:
     averages=0.0
     Sum=0.0
     PandL=0.0
+    change=0.0
     #     # Read each row of data after the header
     for row in csvreader:
     #print(row[0] + " and " + row[1])
@@ -27,19 +43,21 @@ with open(csvpath) as csvfile:
         PandL = float(row[1])
         Sum += PandL
         row_count+=1
-        averages=Sum/row_count
+       # averages=Sum/row_count
+    # for i, rows in csvreader:
+    #     for j,rows in csvreader:
+    #        change= rows[j]-rows[i-1]
+    #     print(rows[j])
+
+    
+    print(round(average,2))
+    print(maxvalue)
+    print(maxindex)
+    print(maxmonth)
+    print(f'{minvalue} {minmonth}')
     print(f'The total row count is: {row_count}')
     print(f'The total sum of columns is: {Sum}')
-    print(f'The average is: {averages}')
+    print(f'Change is {change}')
 
 
-#PandL_list=[]
-#for row in csvfile:
-#        PandL_list.append(row[1])
 
-#sum_PandL=0
-#for rows in csvpath:
-#   sum_PandL += int(rows[1])
-
-
-#print("sum_PandL")
