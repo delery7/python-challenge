@@ -16,13 +16,15 @@ cc=df.groupby(['Candidate']).nunique()
 ccpercent=(cc/vote_count)*100
 candidatesvotes=cc.iloc[:,0]
 candidatepercent=ccpercent.iloc[:,0]
+#provide column names to the DF's, then join on Candidate, then print each element independently
+# put print statements in a for loop as another idea
 
 maxname=cc.max(axis=1)
-print(maxname)
+#print(maxname)
 #print(cc)
-# print(ccpercent)
-# print(candidatesvotes)
-# print(candidatepercent)
+#print(ccpercent)
+print(candidatesvotes)
+#print(candidatepercent)
 
 print("     ")
 print('Election Results')
@@ -34,21 +36,7 @@ print('-------------------')
 print(f'Winner: TBD')
 print('-------------------')
 
-#     print(f'Total P&L: ${Sum}')
-#     print(f'Average Change: ${round(average,2)}')
-#     print(f'Greatest Increase in Profits: {maxmonth} ${maxvalue}')
-#     print(f'Greatest Decrease in Profits: {minmonth} ${minvalue}')
 
-#     outputPath=r"C:\Users\deler\Desktop\python-challenge\PyBank\Analysis\Output.txt"
-#     with open(outputPath, 'w', newline='') as txtfile:
-#         txtfile.write('Financial Analysis\n')
-#         txtfile.write('-------------------\n')
-#         txtfile.write(f'Total Months: {row_count}\n')
-#         txtfile.write(f'Total P&L: ${Sum}\n')
-#         txtfile.write(f'Average Change: ${round(average,2)}\n')
-#         txtfile.write(f'Greatest Increase in Profits: {maxmonth} ${maxvalue}\n')
-#         txtfile.write(f'Greatest Decrease in Profits: {minmonth} ${minvalue}\n')
-#         txtfile.close()
 
 
 
