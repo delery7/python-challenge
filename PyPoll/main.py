@@ -18,22 +18,47 @@ candidatesvotes=cc.iloc[:,0]
 candidatepercent=ccpercent.iloc[:,0]
 #provide column names to the DF's, then join on Candidate, then print each element independently
 # put print statements in a for loop as another idea
+can_sum=pd.merge(left=candidatepercent, right=candidatesvotes, how='left', left_on='Candidate', right_on='Candidate')
+can_sum_idx = can_sum.reset_index(drop=False)
+can_sum_fnl = can_sum_idx.sort_values("Voter ID_y", ascending=False)
 
-maxname=cc.max(axis=1)
-#print(maxname)
+
+# print(can_sum_idx)
+# print(can_sum_fnl)
+
 #print(cc)
 #print(ccpercent)
-print(candidatesvotes)
+#print(candidatesvotes)
 #print(candidatepercent)
+#print(can_sum)
+
+can_nm1=can_sum_fnl.iloc[0,0]
+can_pct1=round(can_sum_fnl.iloc[0,1],2)
+can_tot1=can_sum_fnl.iloc[0,2]
+
+can_nm2=can_sum_fnl.iloc[1,0]
+can_pct2=round(can_sum_fnl.iloc[1,1],2)
+can_tot2=can_sum_fnl.iloc[1,2]
+
+can_nm3=can_sum_fnl.iloc[2,0]
+can_pct3=round(can_sum_fnl.iloc[2,1],2)
+can_tot3=can_sum_fnl.iloc[2,2]
+
+can_nm4=can_sum_fnl.iloc[3,0]
+can_pct4=round(can_sum_fnl.iloc[3,1],2)
+can_tot4=can_sum_fnl.iloc[3,2]
 
 print("     ")
 print('Election Results')
 print('-------------------')
-print(f'Total Votes: {vote_count}')
+print(f'Total Votes: {vote_count} ')
 print('-------------------')
-print(f'{candidatepercent} {candidatesvotes}')
+print(f'{can_nm1}: {can_pct1}% ({can_tot1})')
+print(f'{can_nm2}: {can_pct2}% ({can_tot2})')
+print(f'{can_nm3}: {can_pct3}% ({can_tot3})')
+print(f'{can_nm4}: {can_pct4}% ({can_tot4})')
 print('-------------------')
-print(f'Winner: TBD')
+print(f'Winner: {can_nm1}')
 print('-------------------')
 
 
