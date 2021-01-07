@@ -61,6 +61,21 @@ print('-------------------')
 print(f'Winner: {can_nm1}')
 print('-------------------')
 
+outputPath=r"C:\Users\deler\Desktop\python-challenge\PyPoll\Analysis\Output.txt"
+with open(outputPath, 'w', newline='') as txtfile:
+    txtfile.write('     \n')
+    txtfile.write('Election Results\n')
+    txtfile.write('-------------------\n')
+    txtfile.write(f'Total Votes: {vote_count}\n')
+    txtfile.write('-------------------\n')
+    txtfile.write(f'{can_nm1}: {can_pct1}% ({can_tot1})\n')
+    txtfile.write(f'{can_nm2}: {can_pct2}% ({can_tot2})\n')
+    txtfile.write(f'{can_nm3}: {can_pct3}% ({can_tot3})\n')
+    txtfile.write(f'{can_nm4}: {can_pct4}% ({can_tot4})\n')
+    txtfile.write('-------------------\n')
+    txtfile.write(f'Winner: {can_nm1}\n')
+    txtfile.write('-------------------\n')
+    txtfile.close()
 
 
 
